@@ -15,8 +15,8 @@ import com.curso.RentaCar.Dto.UserDto;
 @Component
 public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	
-	@Autowired private MapperServices<CarDto, Car> mapperCar;
-	@Autowired private MapperServices<UserDto, User> mapperUser;
+	//@Autowired private MapperServices<CarDto, Car> mapperCar;
+	//@Autowired private MapperServices<UserDto, User> mapperUser;
 	
 	@Override
 	public RentDto mapToDto(Rent entity) {	
@@ -52,10 +52,11 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 
 	@Override
 	public List<RentDto> mapListToDto(List<Rent> listUser) {
+		
 		final List<RentDto> listRentDto= new ArrayList<>();
 		listUser.forEach((b)-> {
 			final RentDto rentDto = mapToDto(b);
-			listRentDTO.add(rentDto);		
+			listRentDto.add(rentDto);		
 		});
 		return listRentDto;
 	}
@@ -64,5 +65,4 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	public Page<RentDto> mapPageToDto(Page<Rent> pageEntity) {
 		return pageEntity.map(b-> mapToDto(b));		
 	}
-}
 }
