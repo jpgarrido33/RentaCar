@@ -15,6 +15,14 @@ public class RentDto {
 	private LocalDate finalDate;
 	private User user;
 	private Car car;
+	private double price;
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	public Integer getIdRent() {
 		return idRent;
 	}
@@ -45,19 +53,23 @@ public class RentDto {
 	public void setCar(Car car) {
 		this.car = car;
 	}
-	@Override
-	public String toString() {
-		return "Rent [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
-				+ ", car=" + car + "]";
-	}
-	public RentDto(Integer idRent, LocalDate initDate, LocalDate finalDate, User user, Car car) {
+	
+	
+	public RentDto(Integer idRent, LocalDate initDate, LocalDate finalDate, User user, Car car, double price) {
 		super();
 		this.idRent = idRent;
 		this.initDate = initDate;
 		this.finalDate = finalDate;
 		this.user = user;
 		this.car = car;
+		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "RentDto [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
+				+ ", car=" + car + ", price=" + price + "]";
+	}
+
 	public RentDto() {
 		super();
 		

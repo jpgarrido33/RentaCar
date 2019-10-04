@@ -10,12 +10,28 @@ import javax.persistence.Id;
 
 @Entity
 public class Rent {
+	public Rent(Integer idRent, LocalDate initDate, LocalDate finalDate, Double price, User user, Car car) {
+		super();
+		this.idRent = idRent;
+		this.initDate = initDate;
+		this.finalDate = finalDate;
+		this.price = price;
+		this.user = user;
+		this.car = car;
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@Column(unique = true)
 	private Integer idRent;
 	private LocalDate initDate;
 	private LocalDate finalDate;
+	private Double price;
 	private User user;
 	private Car car;
 	public Integer getIdRent() {
@@ -53,14 +69,8 @@ public class Rent {
 		return "Rent [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
 				+ ", car=" + car + "]";
 	}
-	public Rent(Integer idRent, LocalDate initDate, LocalDate finalDate, User user, Car car) {
-		super();
-		this.idRent = idRent;
-		this.initDate = initDate;
-		this.finalDate = finalDate;
-		this.user = user;
-		this.car = car;
-	}
+	
+	
 	public Rent() {
 		super();
 		
