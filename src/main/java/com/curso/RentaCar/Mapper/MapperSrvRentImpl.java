@@ -1,5 +1,5 @@
 package com.curso.RentaCar.Mapper;
 
-public class MapperSrvRentImpl {
+public class MapperSrvRentImpl implements MapperServices{
 
 }
