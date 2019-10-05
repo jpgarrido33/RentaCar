@@ -45,11 +45,11 @@ public class RentSrvImpl implements RentSrv {
 	}
 
 	
-	@Override
-	public Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable) {
-	
-		return rentRepository.findByUserIdAndCarI(idUser, idCar, pageable);
-	}
+//	@Override
+//	public Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable) {
+//	
+//		return rentRepository.findByUserIdAndCarI(idUser, idCar, pageable);
+//	}
 
 	@Override
 	public Rent updateRent(Integer idRent, RentDto rentDto) {

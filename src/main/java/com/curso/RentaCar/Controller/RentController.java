@@ -25,11 +25,11 @@ public class RentController {
 	@Autowired private MapperServices<RentDto, Rent> mapper;
 	
 
-	@GetMapping
-	public Page<RentDto> getAllR(@PathVariable("idUser") Integer idUser,@PathVariable("idCar") Integer idCar, 
-			@PageableDefault(page = 0, value = 10) Pageable pageable) {
-		return mapper.mapPageToDto(rentSrv.getAllRent(idUser, idCar, pageable));
-	}
+//	@GetMapping
+//	public Page<RentDto> getAllR(@PathVariable("idUser") Integer idUser,@PathVariable("idCar") Integer idCar, 
+//			@PageableDefault(page = 0, value = 10) Pageable pageable) {
+//		return mapper.mapPageToDto(rentSrv.getAllRent(idUser, idCar, pageable));
+//	}
 	
 	@GetMapping("/{idRent}")
 	public Page<RentDto> getRent(@PathVariable("idUser") Integer idUser, @PathVariable("idCar") Integer idCar,
