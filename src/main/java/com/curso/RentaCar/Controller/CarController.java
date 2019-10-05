@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.RentaCar.Dto.CarDto;
@@ -28,8 +27,7 @@ public class CarController {
 	@GetMapping
 	public Page<CarDto> getAllCars(@PageableDefault(page = 0, value = 10) Pageable pageable){
 			
-		return <Page<CarDto>(
-				mapper.mapPageToDto(carSrv.getListCar(pageable)));
+		return 	mapper.mapPageToDto(carSrv.getListCar(pageable));
 
 }
 }
