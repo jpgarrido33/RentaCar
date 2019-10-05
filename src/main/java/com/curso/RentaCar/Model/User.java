@@ -11,6 +11,7 @@ public class User {
 	@Column(unique = true)
 	private Integer idUser;
 	private String name;
+	
 	public Integer getIdCar() {
 		return idUser;
 	}
