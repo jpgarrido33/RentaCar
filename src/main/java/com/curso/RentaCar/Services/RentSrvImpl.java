@@ -5,43 +5,43 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.curso.RentaCar.Dto.UserDto;
-import com.curso.RentaCar.Model.User;
+import com.curso.RentaCar.Dto.RentDto;
+import com.curso.RentaCar.Model.Rent;
 
-public class UserSrvImpl implements UserSrv {
+public class RentSrvImpl implements RentSrv {
 
 	@Override
-	public User createUser(UserDto userDto) {
+	public Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User getUser(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<User> getListUser(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteUser(Integer idUser) {
+	public void deleteRent(Integer idRent) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public User updateUser(Integer idUser, UserDto userDto) {
+	public Rent getRentService(Integer idUser, Integer idCar, Integer idRent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<?> getListRentUser(Integer idUser, Pageable pageable) {
+	public Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Rent updateRent(Integer idRent, RentDto rentDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RentDto> getListRent(List<Rent> rents) {
 		// TODO Auto-generated method stub
 		return null;
 	}

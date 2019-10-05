@@ -1,10 +1,15 @@
 package com.curso.RentaCar.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
 
 
 @Entity
@@ -17,7 +22,14 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
+	private List<Rent> rents = new ArrayList<Rent>();
 	
+	public List<Rent> getRents() {
+		return rents;
+	}
+	public void setRents(List<Rent> rents) {
+		this.rents = rents;
+	}
 	public Integer getIdCar() {
 		return idCar;
 	}

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 
-public interface MapperServices {
+public interface MapperServices<T,S> {
 
-	public interface MapperService <T, S>{
+ 
 	
 		T mapToDto (S entity);
 	
@@ -17,4 +17,4 @@ public interface MapperServices {
 	
 		Page<T> mapPageToDto(Page<S> pageEntity);
 	}	
-}
+
