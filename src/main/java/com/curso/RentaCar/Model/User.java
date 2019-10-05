@@ -6,14 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@Column(unique = true)
 	private Integer idUser;
 	private String name;
 	
+
+	@OneToMany(mappedBy = "user")
 	private List<Rent> rents =new ArrayList<Rent>();
 	
 	

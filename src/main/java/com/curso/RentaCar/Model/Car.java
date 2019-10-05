@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -22,6 +24,7 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
+	@OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
 	private List<Rent> rents = new ArrayList<Rent>();
 	
 	public List<Rent> getRents() {
