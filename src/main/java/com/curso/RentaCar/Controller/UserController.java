@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.curso.RentaCar.Dto.UserDto;
+import com.curso.RentaCar.Exception.UpdateErrorException;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.User;
 import com.curso.RentaCar.Services.UserSrv;
@@ -31,8 +34,15 @@ public class UserController {
 	}
 	
 	@GetMapping("/{idUser}")
-	public UserDto getUser(@PathVariable("idUser") Integer idUser){
+	public UserDto getUser(@PathVariable("idUser") Integer idUser)throws UserNotFoundException{
+		
+		if(idUser==null) {
+			throw new UserNotFoundException ("Usuario no encontrado");
+		}
+		
 		return mapper.mapToDto(userSrv.getUser(idUser));
+
+			
 	}
 	
 	@PostMapping
@@ -42,6 +52,7 @@ public class UserController {
 	}
 	@PutMapping("/{idUser}")
 	public UserDto updateUser (@PathVariable("idUser") Integer idUser,@RequestBody UserDto userDto) {
+		
 		
 		return mapper.mapToDto(userSrv.updateUser(idUser, userDto));
 	}
