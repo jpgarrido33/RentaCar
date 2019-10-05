@@ -63,6 +63,7 @@ public class CarController {
 		carSrv.deleteCarService(idCar);
 	}
 	
-	/*Falta por implementar el mas beneficioso*/
+	/*Falta Crear una funcion dado un coche entre unas fechas nos calcula el beneficio o ingreso que ganamos con ese coche.(+Test)
+		(localTime) Cuanto coches ha alquilado un usuario.*/
 }
 	

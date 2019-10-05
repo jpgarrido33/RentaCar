@@ -15,4 +15,5 @@ public interface RentRepository extends JpaRepository<Rent, Integer> {
 public Optional<Rent> findById(Integer idRent);
 
 public Page<Rent> findByUserIdAndCarI(Integer idUser, Integer idCar,Pageable pageable);
+
 }

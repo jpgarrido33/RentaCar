@@ -44,14 +44,7 @@ public class RentSrvImpl implements RentSrv {
 		rentRepository.deleteById(idRent);
 	}
 
-	@Override
-	public Optional<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent) {
-		userSrv.getUser(idUser);
-		carSrv.getCar(idCar);
-		return rentRepository.findById(idRent);
-	}
 	
-
 	@Override
 	public Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable) {
 	
@@ -74,6 +67,12 @@ public class RentSrvImpl implements RentSrv {
 			listRentDto.add(mapper.mapToDto(b));				
 		});
 		return listRentDto;
+	}
+
+	@Override
+	public Page<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

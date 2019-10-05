@@ -15,7 +15,7 @@ Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) ;
 	
 	void deleteRent(Integer idRent);
 	
-	Optional<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent);
+	Page<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent, Pageable pageable);
 	
 	Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable);
 	
