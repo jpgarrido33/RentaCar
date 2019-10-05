@@ -9,11 +9,11 @@ public class UserDto {
 	private String name;
 	
 	
-	public Integer getIdCar() {
+	public Integer getIdUser() {
 		return idUser;
 	}
-	public void setIdCar(Integer idCar) {
-		this.idUser = idCar;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 	public String getName() {
 		return name;
@@ -23,7 +23,7 @@ public class UserDto {
 	}
 	@Override
 	public String toString() {
-		return "Car [idCar=" + idUser + ", name=" + name + "]";
+		return "UserDto [idUser=" + idUser + ", name=" + name + "]";
 	}
 	public UserDto(Integer idUser, String name) {
 		super();
@@ -34,4 +34,6 @@ public class UserDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 }
+	

@@ -1,5 +1,7 @@
 package com.curso.RentaCar.Model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,21 +14,26 @@ public class User {
 	private Integer idUser;
 	private String name;
 	
-	public Integer getIdCar() {
+	private List<Rent> rents =new ArrayList<Rent>();
+	
+	
+	public List<Rent> getRents() {
+		return rents;
+	}
+	public void setRents(List<Rent> rents) {
+		this.rents = rents;
+	}
+	public Integer getIdUser() {
 		return idUser;
 	}
-	public void setIdCar(Integer idCar) {
-		this.idUser = idCar;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "Car [idCar=" + idUser + ", name=" + name + "]";
 	}
 	public User(Integer idUser, String name) {
 		super();
@@ -35,8 +42,8 @@ public class User {
 	}
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	
-
+	
 }

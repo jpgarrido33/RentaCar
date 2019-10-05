@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.curso.RentaCar.Dto.RentDto;
 import com.curso.RentaCar.Mapper.MapperServices;
@@ -15,7 +16,7 @@ import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Repository.RentRepository;
 
 
-
+@Service
 public class RentSrvImpl implements RentSrv {
 
 	@Autowired private UserSrv userSrv;

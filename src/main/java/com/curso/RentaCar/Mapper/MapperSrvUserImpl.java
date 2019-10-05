@@ -11,29 +11,27 @@ import com.curso.RentaCar.Model.User;
 
 
 @Component
-public class MapperSrvUserImpl  implements MapperServices<UserDTO, User> {
+public class MapperSrvUserImpl  implements MapperServices<UserDto, User> {
 
 	
 
 		
 		@Override
-		public UserDTO mapToDto(User user) {
-			final UserDTO userDto = new UserDTO();
-			if (Optional.ofNullable(user).isPresent()) {
-				userDto.setId(user.getId());
-				userDto.setDni(user.getDni());
+		public UserDto mapToDto(User user) {
+			final UserDto userDto = new UserDto();
+				userDto.setIdUser(user.getIdUser());
 				userDto.setName(user.getName());
-			}
-			return userDto;
+		
+				return userDto;
 		}
 
 		@Override
 		public User mapToEntity(UserDto dto) {
 			final User user = new User();
-			if (Optional.ofNullable(dto).isPresent()) {
-				user.setIdCar(dto.getIdCar());
+			
+				user.setIdUser(dto.getIdUser());
 				user.setName(dto.getName());
-			}
+			
 			return user;
 		}
 
