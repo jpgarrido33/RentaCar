@@ -1,5 +1,7 @@
 package com.curso.RentaCar.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,7 +38,7 @@ public class CarController {
 	public CarDto getCarId(@PathVariable("id") Integer idCar)  {
 		return mapper.mapToDto(carSrv.getCar(idCar));
 	}
-	
+	@PostMapping
 	public CarDto newCar( @RequestBody CarDto carDto) {
 			
 		return mapper.mapToDto(carSrv.createCar(carDto));
@@ -48,7 +50,19 @@ public class CarController {
 		return mapper.mapToDto(carSrv.updateCar(idCar, carDto));
 	
 	}
+	@GetMapping ("/{id}/rent")
+	public List<?> getListRentCar(@PageableDefault(page = 0, value = 10) Pageable pageable,
+			@PathVariable("id") Integer idCar) {
+		List<?> listCarRent = carSrv.getListRentCar(idCar, pageable);
+
+		return listCarRent;
+	}
 	
+	@DeleteMapping("/{id}")
+	public void deleteCar(@PathVariable("id") Integer idCar) {
+		carSrv.deleteCarService(idCar);
+	}
 	
+	/*Falta por implementar el mas beneficioso*/
 }
 	
