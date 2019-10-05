@@ -13,6 +13,7 @@ import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Repository.CarRepository;
 
+
 @Service
 public class CarSrvImpl implements CarSrv  {
 	
@@ -71,10 +72,10 @@ public class CarSrvImpl implements CarSrv  {
 		
 	}
 
-	@Override
-	public Car getCarProfit(LocalDate initDate, LocalDate finalDate) {
-
-		return this.getCar(carRepository.findCarMostProfitableARangeOfDates(initDate, finalDate));
-	}
+	//@Override
+//	public Car getCarProfit(LocalDate initDate, LocalDate finalDate) {
+//
+//		return this.getCar(carRepository.findCarMostProfitableARangeOfDates(initDate, finalDate));
+//	}
 
 }

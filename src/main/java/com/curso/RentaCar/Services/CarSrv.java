@@ -12,7 +12,7 @@ import com.curso.RentaCar.Model.Car;
 
 public interface CarSrv {
 	
-Car createCar(CarDto carDto);
+	Car createCar(CarDto carDto);
 	
 	Car getCar(Integer idCar);
 	
@@ -24,6 +24,6 @@ Car createCar(CarDto carDto);
 	
 	List<?> getListRentCar(Integer idCar, Pageable pageable);
 	
-	Car getCarProfit(LocalDate initDate, LocalDate finalDate);
+	//Car getCarProfit(LocalDate initDate, LocalDate finalDate);
 
 }
