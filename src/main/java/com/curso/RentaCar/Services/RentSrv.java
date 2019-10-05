@@ -1,6 +1,7 @@
 package com.curso.RentaCar.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) ;
 	
 	void deleteRent(Integer idRent);
 	
-	Rent getRentService(Integer idUser, Integer idCar, Integer idRent);
+	Optional<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent);
 	
 	Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable);
 	
