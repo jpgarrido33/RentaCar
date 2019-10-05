@@ -6,17 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
-import com.curso.RentaCar.Model.Rent;
+
 import com.curso.RentaCar.Dto.RentDto;
-import com.curso.RentaCar.Model.Car;
-import com.curso.RentaCar.Model.User;
-import com.curso.RentaCar.Dto.CarDto;
 import com.curso.RentaCar.Dto.UserDto;
+import com.curso.RentaCar.Model.Rent;
+
 @Component
 public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	
-	//@Autowired private MapperServices<CarDto, Car> mapperCar;
-	//@Autowired private MapperServices<UserDto, User> mapperUser;
+
+	
 	
 	@Override
 	public RentDto mapToDto(Rent entity) {	
@@ -24,11 +23,12 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 		final RentDto rentDto = new RentDto();
 		
 		rentDto.setCar(entity.getCar());
+		rentDto.setUser(entity.getUser());
 		rentDto.setFinalDate(entity.getFinalDate());
 		rentDto.setIdRent(entity.getIdRent());
 		rentDto.setInitDate(entity.getInitDate());
 		rentDto.setPrice(entity.getPrice());
-		rentDto.setUser(entity.getUser());
+		
 		
 		return rentDto;
 	}
