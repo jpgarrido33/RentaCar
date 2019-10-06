@@ -2,6 +2,8 @@ package com.curso.RentaCar.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,13 +42,13 @@ public class CarController {
 		return mapper.mapToDto(carSrv.getCar(idCar));
 	}
 	@PostMapping
-	public CarDto newCar( @RequestBody CarDto carDto) {
+	public CarDto newCar(@Valid @RequestBody CarDto carDto) {
 			
 		return mapper.mapToDto(carSrv.createCar(carDto));
 	}
 	
 	@PutMapping("/{idCar}")
-	public CarDto updateCar (@PathVariable("idCar") Integer idCar,@RequestBody CarDto carDto) throws CarNotFoundException {
+	public CarDto updateCar (@PathVariable("idCar") Integer idCar,@Valid @RequestBody CarDto carDto) throws CarNotFoundException {
 		
 		return mapper.mapToDto(carSrv.updateCar(idCar, carDto));
 	

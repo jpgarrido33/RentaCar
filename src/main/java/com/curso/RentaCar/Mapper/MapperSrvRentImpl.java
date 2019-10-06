@@ -2,6 +2,7 @@ package com.curso.RentaCar.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,7 +22,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	public RentDto mapToDto(Rent entity) {	
 		
 		final RentDto rentDto = new RentDto();
-		
+		if(Optional.ofNullable(rentDto).isPresent()) {
 		rentDto.setCar(entity.getCar());
 		rentDto.setUser(entity.getUser());
 		rentDto.setFinalDate(entity.getFinalDate());
@@ -29,7 +30,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 		rentDto.setInitDate(entity.getInitDate());
 		rentDto.setPrice(entity.getPrice());
 		
-		
+		}
 		return rentDto;
 	}
 
@@ -37,7 +38,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	public Rent mapToEntity(RentDto dto)  {
 		
 		final Rent rent = new Rent();		
-		
+		if(Optional.ofNullable(rent).isPresent()){
 		rent.setCar(dto.getCar());
 		rent.setFinalDate(dto.getFinalDate());
 		rent.setIdRent(dto.getIdRent());
@@ -45,7 +46,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 		rent.setPrice(dto.getPrice());
 		rent.setUser(dto.getUser());
 		
-			
+		}
 		
 		return rent;
 	}

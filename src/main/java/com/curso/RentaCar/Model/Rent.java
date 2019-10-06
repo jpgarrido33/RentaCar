@@ -32,9 +32,7 @@ public class Rent {
 	
 	
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition = "DATETIME")
-	private Date dateCreatedRent;
+	
 	public Integer getIdRent() {
 		return idRent;
 	}
@@ -88,12 +86,7 @@ public class Rent {
 	}
 	
 	
-	public Date getDateCreatedRent() {
-		return dateCreatedRent;
-	}
-	public void setDateCreatedRent(Date dateCreatedRent) {
-		this.dateCreatedRent = dateCreatedRent;
-	}
+	
 	public Rent() {
 		super();
 		

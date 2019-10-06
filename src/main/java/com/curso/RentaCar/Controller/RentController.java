@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.curso.RentaCar.Dto.RentDto;
 import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.RentNotFoundException;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Services.RentSrv;
@@ -39,18 +40,18 @@ public class RentController {
 	
 	@PostMapping
 	public RentDto newRent(@PathVariable("idUser") Integer idUser,
-			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) throws CarNotFoundException {
+			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) throws RentNotFoundException, CarNotFoundException, UserNotFoundException {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
 	}
-	@PutMapping("/{id}")
-	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@RequestBody RentDto rentDto) {
+	@PutMapping("/{idRent}")
+	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@RequestBody RentDto rentDto) throws RentNotFoundException {
 		
 		return mapper.mapToDto(rentSrv.updateRent(idRent, rentDto));
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{idRent}")
 	
-	public void deleteRent(@PathVariable("idRent") Integer idRent) {
+	public void deleteRent(@PathVariable("idRent") Integer idRent) throws RentNotFoundException {
 		rentSrv.deleteRent(idRent);
 	}
 }

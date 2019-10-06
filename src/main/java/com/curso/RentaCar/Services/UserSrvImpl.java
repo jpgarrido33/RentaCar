@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.curso.RentaCar.Dto.CarDto;
 import com.curso.RentaCar.Dto.UserDto;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Model.User;
@@ -33,8 +34,9 @@ public class UserSrvImpl implements UserSrv {
 	}
 
 	@Override
-	public User getUser(Integer idUser) {
-		return userRepository.findById(idUser).orElse(null);
+	public User getUser(Integer idUser) throws UserNotFoundException {
+		//return userRepository.findById(idUser).orElse(null);
+		return Optional.ofNullable(userRepository.findById(idUser).get()).orElseThrow(UserNotFoundException::new);
 	}
 
 	@Override
@@ -44,26 +46,24 @@ public class UserSrvImpl implements UserSrv {
 	}
 
 	@Override
-	public void deleteUser(Integer idUser) {
+	public void deleteUser(Integer idUser)throws UserNotFoundException {
 
-		final User user=this.getUser(idUser);
-		
-		userRepository.delete(user);
+			
+		userRepository.delete(Optional.ofNullable(this.getUser(idUser)).orElseThrow(UserNotFoundException::new));
 	}
 
 	@Override
-	public  User updateUser(Integer idUser, UserDto userDto) {
+	public  User updateUser(Integer idUser, UserDto userDto) throws UserNotFoundException {
 		
 		final User user=this.getUser(idUser);
-		//user.setIdUser(userDto.getIdUser());
 		user.setName(userDto.getName());
 		return userRepository.save(user);
 	}
 
-	@Override
-	public List<?> getListRentUser(Integer idUser, Pageable pageable) {
-		final User user = this.getUser(idUser);
-		return rentSrv.getListRent(user.getRents());
-	}
+//	@Override
+//	public List<?> getListRentUser(Integer idUser, Pageable pageable)  {
+//		final User user = this.getUser(idUser);
+//		return  userRepository.findAll(user,pageable);
+//	}
 
 }

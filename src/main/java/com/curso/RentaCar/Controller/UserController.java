@@ -1,5 +1,7 @@
 package com.curso.RentaCar.Controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,24 +35,24 @@ public class UserController {
 	}
 	
 	@GetMapping("/{idUser}")
-	public UserDto getUser(@PathVariable("idUser") Integer idUser){
+	public UserDto getUser(@PathVariable("idUser") Integer idUser) throws UserNotFoundException{
 		
 		return  mapper.mapToDto(userSrv.getUser(idUser));
 	
 	}
 	
 	@PostMapping
-	public UserDto newUser(@RequestBody UserDto userDto) {
+	public UserDto newUser(@Valid@RequestBody UserDto userDto) {
 		return mapper.mapToDto(userSrv.createUser(userDto));
 	}
 	@PutMapping("/{idUser}")
-	public UserDto updateUser (@PathVariable("idUser") Integer idUser,@RequestBody UserDto userDto) {
+	public UserDto updateUser (@PathVariable("idUser") Integer idUser,@Valid@RequestBody UserDto userDto) throws UserNotFoundException {
 		return mapper.mapToDto(userSrv.updateUser(idUser, userDto));
 	}
 
 	@DeleteMapping("/{idUser}")
 	
-	public void deleteRent(@PathVariable("idUser") Integer idUser) {
+	public void deleteRent(@PathVariable("idUser") Integer idUser) throws UserNotFoundException {
 		userSrv.deleteUser(idUser);
 	}
 }

@@ -1,11 +1,19 @@
 package com.curso.RentaCar.Dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class CarDto {
 	private Integer idCar;
+	
+	@NotNull(message ="La marca coche no puede ser Nulo")
+	@NotBlank(message = "La marca de coche deber ser cumplimentado")
 	private String brandCar;
+	@NotNull(message ="El modelo de coche no puede ser Nulo")
+	@NotBlank(message = "El modelo de coche deber ser cumplimentado")
 	private String modelCar;
 	
 	

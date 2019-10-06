@@ -6,20 +6,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.curso.RentaCar.Dto.UserDto;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Model.User;
 
 public interface UserSrv {
 	
 User createUser(UserDto userDto) ;
 	
-	User getUser(Integer idUser);
+	User getUser(Integer idUser) throws UserNotFoundException;
 	
 	Page<User> getListUser(Pageable pageable);
 	
-	void deleteUser(Integer idUser);
+	void deleteUser(Integer idUser) throws UserNotFoundException;
 	
-	User updateUser(Integer idUser, UserDto userDto);
+	User updateUser(Integer idUser, UserDto userDto) throws UserNotFoundException;
 	
-	List<?> getListRentUser(Integer idUser, Pageable pageable);
+	//List<?> getListRentUser(Integer idUser, Pageable pageable) throws UserNotFoundException;
 
 }

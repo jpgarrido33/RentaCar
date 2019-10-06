@@ -1,4 +1,7 @@
 package com.curso.RentaCar.Dto;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -6,6 +9,8 @@ public class UserDto {
 
 	
 	private Integer idUser;
+	@NotNull(message ="El nombre de usuario no puede tener un valor nulo")
+	@NotBlank(message = "Debe especificar un nombre de usuario")
 	private String name;
 	
 	
