@@ -4,14 +4,12 @@ package com.curso.RentaCar.Exception;
 
 	
 		private static final long serialVersionUID = 1L;
-
+		private static final String message = "Ususario no encontrado";
 		
-		public UserNotFoundException(String message) { super(message);
-			
-		}
-
 		public UserNotFoundException() {
 			
+			super(message);
+
 			
 		}
 }

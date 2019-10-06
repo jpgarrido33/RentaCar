@@ -48,7 +48,7 @@ public class UserSrvImpl implements UserSrv {
 
 		final User user=this.getUser(idUser);
 		
-		userRepository.save(user);
+		userRepository.delete(user);
 	}
 
 	@Override
