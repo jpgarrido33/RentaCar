@@ -55,7 +55,7 @@ public class UserSrvImpl implements UserSrv {
 	public  User updateUser(Integer idUser, UserDto userDto) {
 		
 		final User user=this.getUser(idUser);
-		user.setIdUser(userDto.getIdUser());
+		//user.setIdUser(userDto.getIdUser());
 		user.setName(userDto.getName());
 		return userRepository.save(user);
 	}

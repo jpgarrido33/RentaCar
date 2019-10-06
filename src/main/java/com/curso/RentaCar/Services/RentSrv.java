@@ -7,17 +7,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.curso.RentaCar.Dto.RentDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.RentNotFoundException;
 import com.curso.RentaCar.Model.Rent;
 
 public interface RentSrv {
 
-Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) ;
+Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) throws CarNotFoundException ;
 	
 	void deleteRent(Integer idRent);
 	
-	Page<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent, Pageable pageable);
+	Rent getRentService( Integer idRent) throws RentNotFoundException;
 	
-//	Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable);
+	Page<Rent> getAllRent( Pageable pageable);
 	
 	Rent updateRent(Integer idRent, RentDto rentDto);
 

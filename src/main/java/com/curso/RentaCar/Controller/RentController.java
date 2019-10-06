@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.curso.RentaCar.Dto.RentDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.RentNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Services.RentSrv;
@@ -25,21 +27,19 @@ public class RentController {
 	@Autowired private MapperServices<RentDto, Rent> mapper;
 	
 
-//	@GetMapping
-//	public Page<RentDto> getAllR(@PathVariable("idUser") Integer idUser,@PathVariable("idCar") Integer idCar, 
-//			@PageableDefault(page = 0, value = 10) Pageable pageable) {
-//		return mapper.mapPageToDto(rentSrv.getAllRent(idUser, idCar, pageable));
-//	}
+	@GetMapping
+	public Page<RentDto> getAllR(@PageableDefault(page = 0, value = 10) Pageable pageable) {
+		return mapper.mapPageToDto(rentSrv.getAllRent(pageable));
+	}
 	
 	@GetMapping("/{idRent}")
-	public Page<RentDto> getRent(@PathVariable("idUser") Integer idUser, @PathVariable("idCar") Integer idCar,
-			@PathVariable("idRent") Integer idRent,Pageable pageable) {
-		return mapper.mapPageToDto(rentSrv.getRentService(idUser, idCar, idRent, pageable));
+	public RentDto getRent(@PathVariable("idRent") Integer idRent) throws RentNotFoundException {
+		return mapper.mapToDto(rentSrv.getRentService(idRent));
 	}
 	
 	@PostMapping
 	public RentDto newRent(@PathVariable("idUser") Integer idUser,
-			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) {
+			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) throws CarNotFoundException {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
 	}
 	@PutMapping("/{id}")

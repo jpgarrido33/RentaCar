@@ -17,6 +17,8 @@ public class MapperSrvCarImpl implements MapperServices<CarDto,Car>{
 		final CarDto carDto = new CarDto();
 		if (Optional.ofNullable(entity).isPresent()) {
 			carDto.setIdCar(entity.getIdCar());
+			carDto.setBrandCar(entity.getBrandCar());
+			carDto.setModelCar(entity.getModelCar());
 			
 		}
 		return carDto;
@@ -27,7 +29,8 @@ public class MapperSrvCarImpl implements MapperServices<CarDto,Car>{
 		final Car car = new Car();
 		if (Optional.ofNullable(dto).isPresent()) {
 			car.setIdCar(dto.getIdCar());
-			
+			car.setBrandCar(dto.getBrandCar());
+			car.setModelCar(dto.getModelCar());
 		}
 		return car;
 	}

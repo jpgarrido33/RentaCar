@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Repository.CarRepository;
@@ -30,42 +32,35 @@ public class CarSrvImpl implements CarSrv  {
 	}
 
 	@Override
-	public Car getCar(Integer idCar) {
+	public Car getCar(Integer idCar) throws CarNotFoundException  {
 		
-		return carRepository.findById(idCar).orElse(null);
-				
+		 return	Optional.ofNullable(carRepository.findById(idCar).get()).orElseThrow(CarNotFoundException::new);
+		 
 	}
+	
 	@Override
 	public Page<Car> getListCar(Pageable pageable) {
 
-		return carRepository.findAll(pageable);
-		
-		}
+		return carRepository.findAll(pageable);	
+	}
+
 
 	@Override
-	public void deleteCarService(Integer idCar) {
-
-		final Car car = this.getCar(idCar);
-		carRepository.delete(car);
-
+	public void deleteCarService(Integer idCar) throws CarNotFoundException {
 		
+		carRepository.delete(Optional.ofNullable(this.getCar(idCar)).orElseThrow(CarNotFoundException::new));
+
 	}
 
 	@Override
-	public Car updateCar(Integer idCar, CarDto carDto) {
-		
-		final Car car = this.getCar(idCar);
+	public Car updateCar(Integer idCar, CarDto carDto) throws CarNotFoundException {
+		Car car= this.getCar(idCar);
 		car.setBrandCar(carDto.getBrandCar());
 		car.setModelCar(carDto.getModelCar());
 		return carRepository.save(car);
 	}
 
-	@Override
-	public List<?> getListRentCar(Integer idCar, Pageable pageable) {
+
 	
-		final Car car = this.getCar(idCar);
-		return rentSrv.getListRent(car.getRents());
-		
-	}
 
 }

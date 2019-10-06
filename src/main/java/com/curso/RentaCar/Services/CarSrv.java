@@ -8,22 +8,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Model.Car;
 
 public interface CarSrv {
 	
 	Car createCar(CarDto carDto);
 	
-	Car getCar(Integer idCar);
+	Car getCar(Integer idCar) throws CarNotFoundException;
 	
 	Page<Car> getListCar(Pageable pageable);
 	
-	void deleteCarService(Integer idCar);
+	void deleteCarService(Integer idCar) throws CarNotFoundException;
 	
-	Car updateCar(Integer idCar, CarDto carDto);
+	Car updateCar(Integer idCar, CarDto carDto) throws CarNotFoundException;
 	
-	List<?> getListRentCar(Integer idCar, Pageable pageable);
-	
-
-
-}
+	}

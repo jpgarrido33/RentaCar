@@ -25,7 +25,7 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
-	@OneToMany(mappedBy = "car")//, fetch = FetchType.LAZY)
+	@OneToMany//(mappedBy = "car")//, fetch = FetchType.LAZY)
 	private List<Rent> rents = new ArrayList<Rent>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)

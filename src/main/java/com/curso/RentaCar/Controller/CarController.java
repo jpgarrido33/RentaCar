@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Services.CarSrv;
@@ -28,14 +29,14 @@ public class CarController {
 	@Autowired private MapperServices<CarDto, Car> mapper;
 	
 	@GetMapping
-	public Page<CarDto> getPageC(@PageableDefault(page = 0, value = 10) Pageable pageable){
+	public Page<CarDto> getPageCar(@PageableDefault(page = 0, value = 10) Pageable pageable){
 			
 		return mapper.mapPageToDto(carSrv.getListCar(pageable));
 
 	}
 	
 	@GetMapping("/{idCar}")
-	public CarDto getCarId(@PathVariable("idCar") Integer idCar)  {
+	public CarDto getCarId(@PathVariable("idCar") Integer idCar) throws CarNotFoundException  {
 		return mapper.mapToDto(carSrv.getCar(idCar));
 	}
 	@PostMapping
@@ -45,21 +46,14 @@ public class CarController {
 	}
 	
 	@PutMapping("/{idCar}")
-	public CarDto updateCar (@PathVariable("idCar") Integer idCar,@RequestBody CarDto carDto) {
+	public CarDto updateCar (@PathVariable("idCar") Integer idCar,@RequestBody CarDto carDto) throws CarNotFoundException {
 		
 		return mapper.mapToDto(carSrv.updateCar(idCar, carDto));
 	
 	}
-	@GetMapping ("/{idCar}/rent")
-	public List<?> getListRentCar(@PageableDefault(page = 0, value = 10) Pageable pageable,
-			@PathVariable("idCar") Integer idCar) {
-		List<?> listCarRent = carSrv.getListRentCar(idCar, pageable);
-
-		return listCarRent;
-	}
-	
+		
 	@DeleteMapping("/{idCar}")
-	public void deleteCar(@PathVariable("idCar") Integer idCar) {
+	public void deleteCar(@PathVariable("idCar") Integer idCar) throws CarNotFoundException {
 		carSrv.deleteCarService(idCar);
 	}
 	

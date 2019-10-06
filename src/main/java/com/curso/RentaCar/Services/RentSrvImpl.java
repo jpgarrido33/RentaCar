@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.curso.RentaCar.Dto.RentDto;
+import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.RentNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Repository.RentRepository;
@@ -25,7 +27,7 @@ public class RentSrvImpl implements RentSrv {
 	@Autowired private MapperServices<RentDto, Rent> mapper;
 	
 	@Override
-	public Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) {
+	public Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) throws CarNotFoundException {
 		final Optional<Rent> rent = Optional.ofNullable(mapper.mapToEntity(rentDto));
 		if (rent.isPresent()) {
 			rent.get().setUser(userSrv.getUser(idUser));
@@ -45,11 +47,11 @@ public class RentSrvImpl implements RentSrv {
 	}
 
 	
-//	@Override
-//	public Page<Rent> getAllRent(Integer idUser, Integer idCar, Pageable pageable) {
-//	
-//		return rentRepository.findByUserIdAndCarI(idUser, idCar, pageable);
-//	}
+	@Override
+	public Page<Rent> getAllRent(Pageable pageable) {
+	
+		return rentRepository.findAll (pageable);
+	}
 
 	@Override
 	public Rent updateRent(Integer idRent, RentDto rentDto) {
@@ -70,9 +72,9 @@ public class RentSrvImpl implements RentSrv {
 	}
 
 	@Override
-	public Page<Rent> getRentService(Integer idUser, Integer idCar, Integer idRent, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public Rent getRentService( Integer idRent) throws RentNotFoundException {
+		Optional<Rent> rent=Optional.ofNullable(rentRepository.findById(idRent)).orElseThrow(RentNotFoundException::new);
+		return rent.get();
 	}
 
 }

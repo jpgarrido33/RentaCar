@@ -18,11 +18,11 @@ public class User {
 	private String name;
 	
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany//(mappedBy = "user")
 	private List<Rent> rents =new ArrayList<Rent>();
 	
-	@OneToMany(mappedBy = "user")
-	private List<Car> car =new ArrayList<Car>();
+//	@OneToMany(mappedBy = "user")
+//	private List<Car> car =new ArrayList<Car>();
 
 	public Integer getIdUser() {
 		return idUser;
@@ -48,25 +48,25 @@ public class User {
 		this.rents = rents;
 	}
 
-	public List<Car> getCar() {
-		return car;
-	}
-
-	public void setCar(List<Car> car) {
-		this.car = car;
-	}
+//	public List<Car> getCar() {
+//		return car;
+//	}
+//
+//	public void setCar(List<Car> car) {
+//		this.car = car;
+//	}
 
 	@Override
 	public String toString() {
-		return "User [idUser=" + idUser + ", name=" + name + ", rents=" + rents + ", car=" + car + "]";
+		return "User [idUser=" + idUser + ", name=" + name + ", rents=" + rents + "]";
 	}
 
 	public User(Integer idUser, String name, List<Rent> rents, List<Car> car) {
-		super();
+		
 		this.idUser = idUser;
 		this.name = name;
 		this.rents = rents;
-		this.car = car;
+		//this.car = car;
 	}
 
 	public User() {
