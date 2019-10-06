@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -27,11 +28,21 @@ public class Car {
 	@OneToMany(mappedBy = "car")//, fetch = FetchType.LAZY)
 	private List<Rent> rents = new ArrayList<Rent>();
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
+	
 	public List<Rent> getRents() {
 		return rents;
 	}
 	public void setRents(List<Rent> rents) {
 		this.rents = rents;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public Integer getIdCar() {
 		return idCar;
@@ -51,15 +62,20 @@ public class Car {
 	public void setModelCar(String modelCar) {
 		this.modelCar = modelCar;
 	}
+	
 	@Override
 	public String toString() {
-		return "Car [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + "]";
+		return "Car [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + ", rents=" + rents
+				+ ", user=" + user + "]";
 	}
-	public Car(Integer idCar, String brandCar, String modelCar) {
+	
+	public Car(Integer idCar, String brandCar, String modelCar, List<Rent> rents, User user) {
 		super();
 		this.idCar = idCar;
 		this.brandCar = brandCar;
 		this.modelCar = modelCar;
+		this.rents = rents;
+		this.user = user;
 	}
 	public Car() {
 		super();
