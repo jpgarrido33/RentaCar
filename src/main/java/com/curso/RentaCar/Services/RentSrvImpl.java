@@ -36,6 +36,7 @@ public class RentSrvImpl implements RentSrv {
 			rent.get().setCar(carSrv.getCar(idCar));
 			rent.get().setInitDate(rentDto.getInitDate());
 			rent.get().setFinalDate(rentDto.getFinalDate());
+			rent.get().setPrice(rentDto.getPrice());
 			rentRepository.save(rent.get());			
 		}
 		return rent.get();

@@ -22,7 +22,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	public RentDto mapToDto(Rent entity) {	
 		
 		final RentDto rentDto = new RentDto();
-		if(Optional.ofNullable(rentDto).isPresent()) {
+		if(Optional.ofNullable(entity).isPresent()) {
 		rentDto.setCar(entity.getCar());
 		rentDto.setUser(entity.getUser());
 		rentDto.setFinalDate(entity.getFinalDate());
@@ -38,7 +38,7 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 	public Rent mapToEntity(RentDto dto)  {
 		
 		final Rent rent = new Rent();		
-		if(Optional.ofNullable(rent).isPresent()){
+		if(Optional.ofNullable(dto).isPresent()){
 		rent.setCar(dto.getCar());
 		rent.setFinalDate(dto.getFinalDate());
 		rent.setIdRent(dto.getIdRent());
