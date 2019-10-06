@@ -2,6 +2,9 @@ package com.curso.RentaCar.Dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
 
 import com.curso.RentaCar.Model.Car;
@@ -11,10 +14,20 @@ import com.curso.RentaCar.Model.User;
 public class RentDto {
 
 	private Integer idRent;
+	@NotNull(message ="El Valor no puede ser Nulo")
+	@NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa")
 	private LocalDate initDate;
+	@NotNull(message ="El Valor no puede ser Nulo")
+	@NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa")
 	private LocalDate finalDate;
+	@NotNull(message ="El Valor no puede ser Nulo")
+	@NotBlank(message = "Debe asignar un usuario")
 	private User user;
+	@NotNull(message ="El Valor no puede ser Nulo")
+	@NotBlank(message = "Debe asignar un coche")
 	private Car car;
+	@NotNull(message ="El Valor no puede ser Nulo")
+	@NotBlank(message = "Debe asignar un precio")
 	private double price;
 	
 	public double getPrice() {
