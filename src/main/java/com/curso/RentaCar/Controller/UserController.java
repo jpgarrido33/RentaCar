@@ -28,8 +28,7 @@ public class UserController {
 	@Autowired private MapperServices<UserDto, User> mapper;
 	
 	@GetMapping
-	public Page<UserDto> getAllR(@PathVariable("idUser") Integer idUser,@PathVariable("idCar") Integer idCar, 
-			@PageableDefault(page = 0, value = 10) Pageable pageable) {
+	public Page<UserDto> getAllUser(@PageableDefault(page = 0, value = 10) Pageable pageable) {
 		return mapper.mapPageToDto(userSrv.getListUser(pageable));
 	}
 	
@@ -46,14 +45,11 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public UserDto newUser(@PathVariable("idUser") Integer idUser,
-			@PathVariable("idCar") Integer idCar, @RequestBody UserDto userDto) {
+	public UserDto newUser(@RequestBody UserDto userDto) {
 		return mapper.mapToDto(userSrv.createUser(userDto));
 	}
 	@PutMapping("/{idUser}")
 	public UserDto updateUser (@PathVariable("idUser") Integer idUser,@RequestBody UserDto userDto) {
-		
-		
 		return mapper.mapToDto(userSrv.updateUser(idUser, userDto));
 	}
 

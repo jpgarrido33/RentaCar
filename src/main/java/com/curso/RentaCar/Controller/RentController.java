@@ -31,7 +31,7 @@ public class RentController {
 //		return mapper.mapPageToDto(rentSrv.getAllRent(idUser, idCar, pageable));
 //	}
 	
-	@GetMapping("/{idRent}")
+	@GetMapping("/{id}")
 	public Page<RentDto> getRent(@PathVariable("idUser") Integer idUser, @PathVariable("idCar") Integer idCar,
 			@PathVariable("idRent") Integer idRent,Pageable pageable) {
 		return mapper.mapPageToDto(rentSrv.getRentService(idUser, idCar, idRent, pageable));
@@ -42,13 +42,13 @@ public class RentController {
 			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
 	}
-	@PutMapping("/{idRent}")
+	@PutMapping("/{id}")
 	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@RequestBody RentDto rentDto) {
 		
 		return mapper.mapToDto(rentSrv.updateRent(idRent, rentDto));
 	}
 
-	@DeleteMapping("/{idRent}")
+	@DeleteMapping("/{id}")
 	
 	public void deleteRent(@PathVariable("idRent") Integer idRent) {
 		rentSrv.deleteRent(idRent);
