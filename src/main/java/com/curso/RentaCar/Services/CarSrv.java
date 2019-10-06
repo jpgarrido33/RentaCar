@@ -24,6 +24,6 @@ public interface CarSrv {
 	
 	List<?> getListRentCar(Integer idCar, Pageable pageable);
 	
-	//Car getCarProfit(LocalDate initDate, LocalDate finalDate);
+
 
 }

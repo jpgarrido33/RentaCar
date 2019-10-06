@@ -9,6 +9,6 @@ import com.curso.RentaCar.Model.Car;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
-	//Integer findCarMostProfitableARangeOfDates(LocalDate initDate, LocalDate finalDate);
+
 
 }

@@ -25,10 +25,7 @@ public class CarSrvImpl implements CarSrv  {
 	public Car createCar(CarDto carDto) {
 		
 		final Optional<Car> car = Optional.ofNullable(mapper.mapToEntity(carDto));
-//			car.get().setBrandCar(carDto.getBrandCar());
-//			car.get().setIdCar(carDto.getIdCar());
-//			car.get().setModelCar(carDto.getModelCar());
-			
+	
 			return carRepository.save(car.get());
 	}
 
@@ -50,7 +47,7 @@ public class CarSrvImpl implements CarSrv  {
 
 		final Car car = this.getCar(idCar);
 		
-		carRepository.save(car);
+		carRepository.delete(car);
 
 		
 	}
@@ -59,7 +56,8 @@ public class CarSrvImpl implements CarSrv  {
 	public Car updateCar(Integer idCar, CarDto carDto) {
 		
 		final Car car = this.getCar(idCar);
-		
+		car.setBrandCar(carDto.getBrandCar());
+		car.setModelCar(carDto.getModelCar());
 		return carRepository.save(car);
 	}
 
@@ -71,11 +69,5 @@ public class CarSrvImpl implements CarSrv  {
 		return rentSrv.getListRent(car.getRents());
 		
 	}
-
-	//@Override
-//	public Car getCarProfit(LocalDate initDate, LocalDate finalDate) {
-//
-//		return this.getCar(carRepository.findCarMostProfitableARangeOfDates(initDate, finalDate));
-//	}
 
 }
