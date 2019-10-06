@@ -31,7 +31,7 @@ public class RentController {
 //		return mapper.mapPageToDto(rentSrv.getAllRent(idUser, idCar, pageable));
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{idRent}")
 	public Page<RentDto> getRent(@PathVariable("idUser") Integer idUser, @PathVariable("idCar") Integer idCar,
 			@PathVariable("idRent") Integer idRent,Pageable pageable) {
 		return mapper.mapPageToDto(rentSrv.getRentService(idUser, idCar, idRent, pageable));

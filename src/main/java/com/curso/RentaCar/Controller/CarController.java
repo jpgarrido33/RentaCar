@@ -34,7 +34,7 @@ public class CarController {
 
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{idCar}")
 	public CarDto getCarId(@PathVariable("idCar") Integer idCar)  {
 		return mapper.mapToDto(carSrv.getCar(idCar));
 	}
@@ -44,21 +44,21 @@ public class CarController {
 		return mapper.mapToDto(carSrv.createCar(carDto));
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/{idCar}")
 	public CarDto updateCar (@PathVariable("idCar") Integer idCar,@RequestBody CarDto carDto) {
 		
 		return mapper.mapToDto(carSrv.updateCar(idCar, carDto));
 	
 	}
-	@GetMapping ("/{id}/rent")
+	@GetMapping ("/{idCar}/rent")
 	public List<?> getListRentCar(@PageableDefault(page = 0, value = 10) Pageable pageable,
-			@PathVariable("idRent") Integer idCar) {
+			@PathVariable("idCar") Integer idCar) {
 		List<?> listCarRent = carSrv.getListRentCar(idCar, pageable);
 
 		return listCarRent;
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{idCar}")
 	public void deleteCar(@PathVariable("idCar") Integer idCar) {
 		carSrv.deleteCarService(idCar);
 	}
