@@ -46,7 +46,6 @@ public class CarSrvImpl implements CarSrv  {
 	public void deleteCarService(Integer idCar) {
 
 		final Car car = this.getCar(idCar);
-		
 		carRepository.delete(car);
 
 		
@@ -65,7 +64,6 @@ public class CarSrvImpl implements CarSrv  {
 	public List<?> getListRentCar(Integer idCar, Pageable pageable) {
 	
 		final Car car = this.getCar(idCar);
-		
 		return rentSrv.getListRent(car.getRents());
 		
 	}
