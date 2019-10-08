@@ -25,7 +25,7 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
-	@OneToMany//(mappedBy = "car")//, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "car")
 	private List<Rent> rents = new ArrayList<Rent>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -63,12 +63,13 @@ public class Car {
 		this.modelCar = modelCar;
 	}
 	
+
+	
 	@Override
 	public String toString() {
 		return "Car [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + ", rents=" + rents
 				+ ", user=" + user + "]";
 	}
-	
 	public Car(Integer idCar, String brandCar, String modelCar, List<Rent> rents, User user) {
 		super();
 		this.idCar = idCar;

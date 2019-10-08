@@ -68,7 +68,14 @@ public class RentDto {
 	}
 	
 	
-	public RentDto(Integer idRent, LocalDate initDate, LocalDate finalDate, User user, Car car, double price) {
+	
+
+	public RentDto(Integer idRent,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") LocalDate initDate,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") LocalDate finalDate,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un usuario") User user,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un coche") Car car,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un precio") double price) {
 		super();
 		this.idRent = idRent;
 		this.initDate = initDate;
@@ -82,7 +89,6 @@ public class RentDto {
 		return "RentDto [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
 				+ ", car=" + car + ", price=" + price + "]";
 	}
-
 	public RentDto() {
 		super();
 		

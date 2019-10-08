@@ -35,15 +35,18 @@ public class CarDto {
 	public void setModelCar(String modelCar) {
 		this.modelCar = modelCar;
 	}
-	@Override
-	public String toString() {
-		return "Car [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + "]";
-	}
-	public CarDto(Integer idCar, String brandCar, String modelCar) {
+	
+	public CarDto(Integer idCar,
+			@NotNull(message = "La marca coche no puede ser Nulo") @NotBlank(message = "La marca de coche deber ser cumplimentado") String brandCar,
+			@NotNull(message = "El modelo de coche no puede ser Nulo") @NotBlank(message = "El modelo de coche deber ser cumplimentado") String modelCar) {
 		super();
 		this.idCar = idCar;
 		this.brandCar = brandCar;
 		this.modelCar = modelCar;
+	}
+	@Override
+	public String toString() {
+		return "CarDto [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + "]";
 	}
 	public CarDto() {
 		super();

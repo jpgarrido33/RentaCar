@@ -63,11 +63,13 @@ public class Rent {
 	public void setCar(Car car) {
 		this.car = car;
 	}
+
 	@Override
 	public String toString() {
-		return "Rent [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
-				+ ", car=" + car + "]";
+		return "Rent [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", price=" + price
+				+ ", user=" + user + ", car=" + car + "]";
 	}
+
 	
 	public Rent(Integer idRent, LocalDate initDate, LocalDate finalDate, Double price, User user, Car car) {
 		super();

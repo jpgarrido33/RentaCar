@@ -26,18 +26,21 @@ public class UserDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Override
-	public String toString() {
-		return "UserDto [idUser=" + idUser + ", name=" + name + "]";
-	}
-	public UserDto(Integer idUser, String name) {
+	
+	
+	public UserDto(Integer idUser,
+			@NotNull(message = "El nombre de usuario no puede tener un valor nulo") @NotBlank(message = "Debe especificar un nombre de usuario") String name) {
 		super();
 		this.idUser = idUser;
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "UserDto [idUser=" + idUser + ", name=" + name + "]";
+	}
 	public UserDto() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 }
