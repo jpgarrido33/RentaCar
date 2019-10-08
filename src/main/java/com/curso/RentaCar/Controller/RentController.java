@@ -40,7 +40,7 @@ public class RentController {
 		return mapper.mapToDto(rentSrv.getRentService(idRent));
 	}
 	
-	@PostMapping
+	@PostMapping("/user/{idUser}/car/{idCar}")//localhost:8080/rent/user/1/car/2
 	public RentDto newRent(@PathVariable("idUser") Integer idUser,
 			@PathVariable("idCar") Integer idCar,@Valid @RequestBody RentDto rentDto) throws RentNotFoundException, CarNotFoundException, UserNotFoundException {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
