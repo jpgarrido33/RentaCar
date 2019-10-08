@@ -44,10 +44,7 @@ public class CarDto {
 		this.brandCar = brandCar;
 		this.modelCar = modelCar;
 	}
-	@Override
-	public String toString() {
-		return "CarDto [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + "]";
-	}
+	
 	public CarDto() {
 		super();
 		

@@ -18,10 +18,10 @@ public class User {
 	private String name;
 	
 
-	@OneToMany(mappedBy = "user") 
+	@OneToMany//(mappedBy = "user") 
 	private List<Rent> rents =new ArrayList<Rent>();
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany//(mappedBy = "user")
 	private List<Car> car =new ArrayList<Car>();
 
 	public Integer getIdUser() {
@@ -58,10 +58,6 @@ public class User {
 
 	
 
-	@Override
-	public String toString() {
-		return "User [idUser=" + idUser + ", name=" + name + ", rents=" + rents + ", car=" + car + "]";
-	}
 
 	
 

@@ -3,6 +3,7 @@ package com.curso.RentaCar.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,10 +26,10 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
-	@OneToMany(mappedBy = "car")
+	@OneToMany//(mappedBy = "car")
 	private List<Rent> rents = new ArrayList<Rent>();
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private User user;
 	
 	public List<Rent> getRents() {
@@ -65,11 +66,6 @@ public class Car {
 	
 
 	
-	@Override
-	public String toString() {
-		return "Car [idCar=" + idCar + ", brandCar=" + brandCar + ", modelCar=" + modelCar + ", rents=" + rents
-				+ ", user=" + user + "]";
-	}
 	public Car(Integer idCar, String brandCar, String modelCar, List<Rent> rents, User user) {
 		super();
 		this.idCar = idCar;

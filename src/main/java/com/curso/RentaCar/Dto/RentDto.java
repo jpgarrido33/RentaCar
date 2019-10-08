@@ -84,11 +84,7 @@ public class RentDto {
 		this.car = car;
 		this.price = price;
 	}
-	@Override
-	public String toString() {
-		return "RentDto [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", user=" + user
-				+ ", car=" + car + ", price=" + price + "]";
-	}
+	
 	public RentDto() {
 		super();
 		

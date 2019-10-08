@@ -34,10 +34,7 @@ public class UserDto {
 		this.idUser = idUser;
 		this.name = name;
 	}
-	@Override
-	public String toString() {
-		return "UserDto [idUser=" + idUser + ", name=" + name + "]";
-	}
+	
 	public UserDto() {
 		super();
 		

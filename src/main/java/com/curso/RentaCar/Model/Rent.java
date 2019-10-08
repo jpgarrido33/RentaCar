@@ -3,6 +3,7 @@ package com.curso.RentaCar.Model;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,10 +25,10 @@ public class Rent {
 	private LocalDate finalDate;
 	private Double price;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private User user;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Car car;
 	
 	
@@ -64,11 +65,6 @@ public class Rent {
 		this.car = car;
 	}
 
-	@Override
-	public String toString() {
-		return "Rent [idRent=" + idRent + ", initDate=" + initDate + ", finalDate=" + finalDate + ", price=" + price
-				+ ", user=" + user + ", car=" + car + "]";
-	}
 
 	
 	public Rent(Integer idRent, LocalDate initDate, LocalDate finalDate, Double price, User user, Car car) {
