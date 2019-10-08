@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+
 
 @Entity
 public class Rent {
@@ -21,7 +21,9 @@ public class Rent {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@Column(unique = true)
 	private Integer idRent;
+	
 	private LocalDate initDate;
+
 	private LocalDate finalDate;
 	private Double price;
 	

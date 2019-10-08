@@ -16,10 +16,10 @@ public class RentDto {
 	private Integer idRent;
 	@NotNull(message ="El Valor no puede ser Nulo")
 	@NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa")
-	private LocalDate initDate;
+	private String initDate;
 	@NotNull(message ="El Valor no puede ser Nulo")
 	@NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa")
-	private LocalDate finalDate;
+	private String finalDate;
 	@NotNull(message ="El Valor no puede ser Nulo")
 	@NotBlank(message = "Debe asignar un usuario")
 	private User user;
@@ -42,16 +42,16 @@ public class RentDto {
 	public void setIdRent(Integer idRent) {
 		this.idRent = idRent;
 	}
-	public LocalDate getInitDate() {
+	public String getInitDate() {
 		return initDate;
 	}
-	public void setInitDate(LocalDate initDate) {
+	public void setInitDate(String initDate) {
 		this.initDate = initDate;
 	}
-	public LocalDate getFinalDate() {
+	public String getFinalDate() {
 		return finalDate;
 	}
-	public void setFinalDate(LocalDate finalDate) {
+	public void setFinalDate(String finalDate) {
 		this.finalDate = finalDate;
 	}
 	public User getUser() {
@@ -71,8 +71,8 @@ public class RentDto {
 	
 
 	public RentDto(Integer idRent,
-			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") LocalDate initDate,
-			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") LocalDate finalDate,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") String initDate,
+			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe especificar una fecha: yyyy/mm/aa") String finalDate,
 			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un usuario") User user,
 			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un coche") Car car,
 			@NotNull(message = "El Valor no puede ser Nulo") @NotBlank(message = "Debe asignar un precio") double price) {

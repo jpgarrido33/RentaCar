@@ -1,5 +1,7 @@
 package com.curso.RentaCar.Services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,8 +36,8 @@ public class RentSrvImpl implements RentSrv {
 		if (rent.isPresent()) {
 			rent.get().setUser(userSrv.getUser(idUser));
 			rent.get().setCar(carSrv.getCar(idCar));
-			rent.get().setInitDate(rentDto.getInitDate());
-			rent.get().setFinalDate(rentDto.getFinalDate());
+			rent.get().setInitDate(LocalDate.parse(rentDto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			rent.get().setFinalDate(LocalDate.parse(rentDto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 			rent.get().setPrice(rentDto.getPrice());
 			rentRepository.save(rent.get());			
 		}
@@ -66,8 +68,8 @@ public class RentSrvImpl implements RentSrv {
 	@Override
 	public Rent updateRent(Integer idRent, RentDto rentDto) throws RentNotFoundException{
 		Rent rent =this.getRentService(idRent);
-		rent.setInitDate(rentDto.getInitDate());
-		rent.setFinalDate(rentDto.getFinalDate());
+		rent.setInitDate(LocalDate.parse(rentDto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		rent.setFinalDate(LocalDate.parse(rentDto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		rent.setPrice(rentDto.getPrice());
 
 		return rentRepository.save(rent);

@@ -1,13 +1,13 @@
 package com.curso.RentaCar.Mapper;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
-
 import com.curso.RentaCar.Dto.RentDto;
 import com.curso.RentaCar.Dto.UserDto;
 import com.curso.RentaCar.Model.Rent;
@@ -25,9 +25,9 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 		if(Optional.ofNullable(entity).isPresent()) {
 		rentDto.setCar(entity.getCar());
 		rentDto.setUser(entity.getUser());
-		rentDto.setFinalDate(entity.getFinalDate());
+		rentDto.setFinalDate(entity.getFinalDate().toString());
 		rentDto.setIdRent(entity.getIdRent());
-		rentDto.setInitDate(entity.getInitDate());
+		rentDto.setInitDate(entity.getInitDate().toString());
 		rentDto.setPrice(entity.getPrice());
 		
 		}
@@ -40,9 +40,9 @@ public class MapperSrvRentImpl implements MapperServices< RentDto, Rent>{
 		final Rent rent = new Rent();		
 		if(Optional.ofNullable(dto).isPresent()){
 		rent.setCar(dto.getCar());
-		rent.setFinalDate(dto.getFinalDate());
+		rent.setFinalDate(LocalDate.parse(dto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		rent.setIdRent(dto.getIdRent());
-		rent.setInitDate(dto.getInitDate());
+		rent.setInitDate(LocalDate.parse(dto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		rent.setPrice(dto.getPrice());
 		rent.setUser(dto.getUser());
 		
