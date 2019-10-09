@@ -46,7 +46,7 @@ public class RentController {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
 	}
 	@PutMapping("/{idRent}") //localhost:8080/rent/1*
-	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@Valid @RequestBody RentDto rentDto) throws RentNotFoundException {
+	public RentDto updateRent (@PathVariable("idRent") Integer idRent, @RequestBody RentDto rentDto) throws RentNotFoundException {
 		
 		return mapper.mapToDto(rentSrv.updateRent(idRent, rentDto));
 	}
