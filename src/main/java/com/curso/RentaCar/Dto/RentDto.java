@@ -1,7 +1,5 @@
 package com.curso.RentaCar.Dto;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 

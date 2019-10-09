@@ -29,4 +29,4 @@ Formato HTML para PostMan en Rent a Car
 3.-DELETE-> Elimina un Alquiler: ->http://localhost:8080/rent/1*
 
 PD: donde 1* ó 2* corresponderá al id de usuario/car/rent con el que se quiere interactuar.
-
+	El formato de fechas debe ser: "yyyy-MM-dd"

@@ -42,11 +42,11 @@ public class RentController {
 	
 	@PostMapping("/user/{idUser}/car/{idCar}")//localhost:8080/rent/user/1/car/2
 	public RentDto newRent(@PathVariable("idUser") Integer idUser,
-			@PathVariable("idCar") Integer idCar,@Valid @RequestBody RentDto rentDto) throws RentNotFoundException, CarNotFoundException, UserNotFoundException {
+			@PathVariable("idCar") Integer idCar, @RequestBody RentDto rentDto) throws RentNotFoundException, CarNotFoundException, UserNotFoundException {
 		return mapper.mapToDto(rentSrv.createRent(idUser, idCar, rentDto));
 	}
 	@PutMapping("/{idRent}")
-	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@Valid@RequestBody RentDto rentDto) throws RentNotFoundException {
+	public RentDto updateRent (@PathVariable("idRent") Integer idRent,@Valid @RequestBody RentDto rentDto) throws RentNotFoundException {
 		
 		return mapper.mapToDto(rentSrv.updateRent(idRent, rentDto));
 	}
