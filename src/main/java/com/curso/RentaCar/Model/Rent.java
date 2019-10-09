@@ -67,7 +67,12 @@ public class Rent {
 		this.car = car;
 	}
 
-
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 	
 	public Rent(Integer idRent, LocalDate initDate, LocalDate finalDate, Double price, User user, Car car) {
 		super();
@@ -78,14 +83,6 @@ public class Rent {
 		this.user = user;
 		this.car = car;
 	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-	
-	
 	
 	public Rent() {
 		super();
