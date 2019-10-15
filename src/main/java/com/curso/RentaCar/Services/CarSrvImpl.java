@@ -1,6 +1,7 @@
 package com.curso.RentaCar.Services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
+import com.curso.RentaCar.Model.User;
 import com.curso.RentaCar.Repository.CarRepository;
 
 
@@ -22,6 +24,8 @@ public class CarSrvImpl implements CarSrv  {
 	@Autowired private MapperServices<CarDto,Car> mapper;
 	@Autowired private CarRepository carRepository;
 	@Autowired private RentSrv rentSrv;
+	@Autowired private CarSrv carSrv;
+	@Autowired private UserSrv userSrv;
 	
 	@Override
 	public Car createCar(CarDto carDto) {
@@ -60,6 +64,19 @@ public class CarSrvImpl implements CarSrv  {
 		return carRepository.save(car);
 	}
 
+	@Override
+	public Car updateCreatelationUser(Integer idCar, Integer idUser) throws UserNotFoundException, CarNotFoundException   {
+		User user=userSrv.getUser(idUser);
+		Car car= carSrv.getCar(idCar);
+		car.setUser(user);
+		List<Car> listcar =new ArrayList<Car>();
+		listcar.add(car);	
+		carRepository.save(car);
+		
+		return carRepository.save(car);
+	
+		
+	}
 
 	
 

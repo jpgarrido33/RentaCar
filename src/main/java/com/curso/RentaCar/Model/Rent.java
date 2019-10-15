@@ -27,10 +27,10 @@ public class Rent {
 	private LocalDate finalDate;
 	private Double price;
 	
-	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private User user;
 	
-	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Car car;
 	
 	

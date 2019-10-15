@@ -18,10 +18,10 @@ public class User {
 	private String name;
 	
 
-	@OneToMany//(mappedBy = "user") 
+	@OneToMany(mappedBy = "user") 
 	private List<Rent> rents =new ArrayList<Rent>();
 	
-	@OneToMany//(mappedBy = "user")
+	@OneToMany(mappedBy = "user")
 	private List<Car> car =new ArrayList<Car>();
 
 	public Integer getIdUser() {

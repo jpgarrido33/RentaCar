@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.curso.RentaCar.Dto.CarDto;
 import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Model.Car;
 
 public interface CarSrv {
@@ -22,5 +23,7 @@ public interface CarSrv {
 	void deleteCarService(Integer idCar) throws CarNotFoundException;
 	
 	Car updateCar(Integer idCar, CarDto carDto) throws CarNotFoundException;
+	
+	Car updateCreatelationUser(Integer idCar, Integer idUser) throws UserNotFoundException, CarNotFoundException;
 	
 	}

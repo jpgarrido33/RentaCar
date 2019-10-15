@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.RentaCar.Dto.CarDto;
 import com.curso.RentaCar.Exception.CarNotFoundException;
+import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Services.CarSrv;
@@ -52,6 +53,11 @@ public class CarController {
 		
 		return mapper.mapToDto(carSrv.updateCar(idCar, carDto));
 	
+	}
+	
+	@PutMapping("/{idCar}/user/{idUser}")    //asocio un coche a un usuario -> http://localhost:8080/car/1*/user/1*
+	public CarDto relationCarUser(@PathVariable("idCar") Integer idCar, @PathVariable ("idUser") Integer idUser) throws CarNotFoundException, UserNotFoundException	{
+		return mapper.mapToDto(carSrv.updateCreatelationUser(idCar,idUser)); // implementar updateCarrelationUser para guardar los datos del usuario en la tabla coche
 	}
 		
 	@DeleteMapping("/{idCar}")

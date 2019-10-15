@@ -26,10 +26,10 @@ public class Car {
 	private String brandCar;
 	private String modelCar;
 	
-	@OneToMany//(mappedBy = "car")
+	@OneToMany(mappedBy = "car")
 	private List<Rent> rents = new ArrayList<Rent>();
 	
-	@ManyToOne//(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private User user;
 	
 	public List<Rent> getRents() {
