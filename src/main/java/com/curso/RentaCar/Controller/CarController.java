@@ -64,8 +64,13 @@ public class CarController {
 	public void deleteCar(@PathVariable("idCar") Integer idCar) throws CarNotFoundException {
 		carSrv.deleteCarService(idCar);
 	}
+	@GetMapping("{idCar}/rent/{initDate}/{finalDate}")//http://localhost:8080/car/1/rent/2015-01-01/2019-10-01
+													//*funcion dado un coche entre unas fechas nos calcula el beneficio o ingreso que ganamos con ese coche
+	public Double carDateProfit (@PathVariable("idCar") Integer idCar , @PathVariable("initDate") String initDate, @PathVariable("finalDate") String finalDate) throws CarNotFoundException{
+		
+		return	carSrv.calcProfit(idCar,initDate,finalDate);
+	}
+
 	
-	/*Falta Crear una funcion dado un coche entre unas fechas nos calcula el beneficio o ingreso que ganamos con ese coche.(+Test)
-		(localTime) Cuanto coches ha alquilado un usuario.*/
 }
 	

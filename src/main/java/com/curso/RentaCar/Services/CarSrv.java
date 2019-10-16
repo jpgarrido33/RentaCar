@@ -25,5 +25,7 @@ public interface CarSrv {
 	Car updateCar(Integer idCar, CarDto carDto) throws CarNotFoundException;
 	
 	Car updateCreatelationUser(Integer idCar, Integer idUser) throws UserNotFoundException, CarNotFoundException;
+
+	Double calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException;
 	
 	}

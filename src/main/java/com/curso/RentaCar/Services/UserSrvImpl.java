@@ -64,13 +64,6 @@ public class UserSrvImpl implements UserSrv {
 
 	@Override
 	public  List<Rent> getRentOfUser(Integer idUser) throws UserNotFoundException {
-//		// TODO sacar listado de alquileres de un usuario
-//		
-//		List<User> listuser= new ArrayList<>();
-//		listuser.forEach((b)-> {
-//				
-//					
-//				});
 				
 				User user = userSrv.getUser(idUser);
 				return user.getRents(); 

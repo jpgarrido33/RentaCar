@@ -1,6 +1,7 @@
 package com.curso.RentaCar.Services;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
+import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Model.User;
 import com.curso.RentaCar.Repository.CarRepository;
 
@@ -76,6 +78,27 @@ public class CarSrvImpl implements CarSrv  {
 		return carRepository.save(car);
 	
 		
+	}
+
+	@Override
+	public  Double calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException {
+		
+		Car car= carSrv.getCar(idCar);
+		
+		LocalDate fIni=LocalDate.parse(initDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		LocalDate fDate=LocalDate.parse(finalDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		List<Rent> listRent= car.getRents();
+		Double profit=0.0;
+		
+		for(Rent rent:listRent) {
+			if(rent.getInitDate().isAfter(fIni) && rent.getFinalDate().isBefore(fDate)) {
+				
+				profit=profit+ rent.getPrice();
+			}
+			
+		}
+		
+		return profit;
 	}
 
 	
