@@ -10,6 +10,7 @@ Formato HTML para PostMan en Rent a Car
 3.-POST->Añadir Ususario:  ->http://localhost:8080/user
 4.-PUT-> Modificar usario: -> http://localhost:8080/user/1*
 5.-DELETE->Eliminar un usuario -> http://localhost:8080/user/1*
+6.-GET-> Obtener cuantos coches ha alquilado un usuario determinado -> http://localhost:8080/user/1*/rent
 
 :::::::::::Formato ejemplo JSON::::::::::::
 {

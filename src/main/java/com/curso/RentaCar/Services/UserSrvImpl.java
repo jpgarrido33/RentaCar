@@ -1,7 +1,10 @@
 package com.curso.RentaCar.Services;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.curso.RentaCar.Dto.UserDto;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
+import com.curso.RentaCar.Model.Rent;
 import com.curso.RentaCar.Model.User;
 import com.curso.RentaCar.Repository.UserRepository;
 
@@ -17,6 +21,7 @@ import com.curso.RentaCar.Repository.UserRepository;
 public class UserSrvImpl implements UserSrv {
 	
 
+	@Autowired private UserSrv userSrv;
 	@Autowired private UserRepository userRepository;
 	@Autowired private MapperServices <UserDto,User> mapper;
 
@@ -55,6 +60,25 @@ public class UserSrvImpl implements UserSrv {
 		final User user=this.getUser(idUser);
 		user.setName(userDto.getName());
 		return userRepository.save(user);
+	}
+
+	@Override
+	public  List<Rent> getRentOfUser(Integer idUser) throws UserNotFoundException {
+//		// TODO sacar listado de alquileres de un usuario
+//		
+//		List<User> listuser= new ArrayList<>();
+//		listuser.forEach((b)-> {
+//				
+//					
+//				});
+				
+				User user = userSrv.getUser(idUser);
+				return user.getRents(); 
+		
+	
+		
+		
+
 	}
 
 }
