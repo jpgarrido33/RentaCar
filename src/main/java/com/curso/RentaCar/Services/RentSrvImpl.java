@@ -12,13 +12,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.curso.RentaCar.Dto.CarDto;
 import com.curso.RentaCar.Dto.RentDto;
+import com.curso.RentaCar.Dto.UserDto;
 import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.RentNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
 import com.curso.RentaCar.Model.Car;
 import com.curso.RentaCar.Model.Rent;
+import com.curso.RentaCar.Model.User;
 import com.curso.RentaCar.Repository.RentRepository;
 
 
@@ -29,19 +32,25 @@ public class RentSrvImpl implements RentSrv {
 	@Autowired private CarSrv carSrv;
 	@Autowired private RentRepository rentRepository;
 	@Autowired private MapperServices<RentDto, Rent> mapper;
+	@Autowired private MapperServices<CarDto, Car> mapperCar;
+	@Autowired private MapperServices<UserDto, User> mapperUser;
+	
 	
 	@Override
 	public Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) throws CarNotFoundException, UserNotFoundException {
-		final Optional<Rent> rent = Optional.ofNullable(mapper.mapToEntity(rentDto));
-		if (rent.isPresent()) {
-			rent.get().setUser(userSrv.getUser(idUser));
-			rent.get().setCar(carSrv.getCar(idCar));
-			rent.get().setInitDate(LocalDate.parse(rentDto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-			rent.get().setFinalDate(LocalDate.parse(rentDto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-			rent.get().setPrice(rentDto.getPrice());
-			rentRepository.save(rent.get());			
-		}
-		return rent.get();
+		
+		
+		Rent rent=new Rent();
+		rent.setUser(userSrv.getUser(idUser));
+		rent.setCar(carSrv.getCar(idCar));
+		rent.setInitDate(LocalDate.parse(rentDto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		rent.setFinalDate(LocalDate.parse(rentDto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		rent.setPrice(rentDto.getPrice());
+		rentRepository.save(rent);			
+	
+	return rent;
+		
+
 	}
 	
 	@Override
