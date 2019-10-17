@@ -26,11 +26,8 @@ public class ControllerExceptionAdvice {
 	public ResponseEntity<Error> userNotFoundException(UserNotFoundException ex, WebRequest request) {
 	errorDetail = new Error(new Date(), ex.getMessage(), request.getDescription(false));
 	return new ResponseEntity<Error>(errorDetail, HttpStatus.NOT_FOUND); 
-	
-
 	}
-	
-	
+		
 	@ResponseBody
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(CarNotFoundException.class)

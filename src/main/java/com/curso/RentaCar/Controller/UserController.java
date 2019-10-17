@@ -42,10 +42,8 @@ public class UserController {
 	@GetMapping("/{idUser}")
 	public UserDto getUser(@PathVariable("idUser") Integer idUser) throws UserNotFoundException{
 		
-		if(userSrv.getUser(idUser)==null) {throw new UserNotFoundException();}
-		
-		
-		return mapper.mapToDto(userSrv.getUser(idUser));
+			
+			return mapper.mapToDto(userSrv.getUser(idUser));
 	
 	}
 	

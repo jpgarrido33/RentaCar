@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import org.omg.CORBA.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,10 +38,9 @@ public class UserSrvImpl implements UserSrv {
 
 	@Override
 	public User getUser(Integer idUser) throws UserNotFoundException {
-	 
-		return Optional.ofNullable(userRepository.findById(idUser).get()).orElseThrow(UserNotFoundException::new);
 		
-	}
+			return  userRepository.findById(idUser).orElseThrow(UserNotFoundException::new);
+		}
 
 	@Override
 	public Page<User> getListUser(Pageable pageable) {
@@ -50,16 +50,16 @@ public class UserSrvImpl implements UserSrv {
 
 	@Override
 	public void deleteUser(Integer idUser)throws UserNotFoundException {
-
 			
 		userRepository.delete(Optional.ofNullable(this.getUser(idUser)).orElseThrow(UserNotFoundException::new));
-	}
+	} 
 
 	@Override
 	public  User updateUser(Integer idUser, UserDto userDto) throws UserNotFoundException {
 		
 		final User user=this.getUser(idUser);
 		user.setName(userDto.getName());
+		
 		return userRepository.save(user);
 	}
 

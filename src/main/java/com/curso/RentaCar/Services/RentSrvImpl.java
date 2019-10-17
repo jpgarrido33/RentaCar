@@ -39,6 +39,15 @@ public class RentSrvImpl implements RentSrv {
 	@Override
 	public Rent createRent(Integer idUser, Integer idCar, RentDto rentDto) throws CarNotFoundException, UserNotFoundException {
 		
+		if(userSrv.getUser(idUser)==null) {
+			
+			throw new UserNotFoundException();
+		}
+		else if(carSrv.getCar(idCar)==null){
+			
+			throw new CarNotFoundException();
+			
+		}
 		
 		Rent rent=new Rent();
 		rent.setUser(userSrv.getUser(idUser));
@@ -55,8 +64,10 @@ public class RentSrvImpl implements RentSrv {
 	
 	@Override
 	public Rent getRentService( Integer idRent) throws RentNotFoundException {
-		Optional<Rent> rent=Optional.ofNullable(rentRepository.findById(idRent)).orElseThrow(RentNotFoundException::new);
-		return rent.get();
+		
+		Rent rent=rentRepository.findById(idRent).orElseThrow(RentNotFoundException::new); // corregir que la borrar un usuario, no de error al mostrar listado alquileres
+		
+		return rent;
 	}
 	
 	@Override
@@ -76,7 +87,7 @@ public class RentSrvImpl implements RentSrv {
 
 	@Override
 	public Rent updateRent(Integer idRent, RentDto rentDto) throws RentNotFoundException{
-		Rent rent =this.getRentService(idRent);
+		Rent rent =this.getRentService(idRent);		
 		rent.setInitDate(LocalDate.parse(rentDto.getInitDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		rent.setFinalDate(LocalDate.parse(rentDto.getFinalDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		rent.setPrice(rentDto.getPrice());
