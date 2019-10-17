@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Dto.CarDtoProfit;
 import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
@@ -81,7 +82,7 @@ public class CarSrvImpl implements CarSrv  {
 	}
 
 	@Override
-	public  Double calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException {
+	public  CarDtoProfit calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException {
 		
 		Car car= carSrv.getCar(idCar);
 		
@@ -98,7 +99,13 @@ public class CarSrvImpl implements CarSrv  {
 			
 		}
 		
-		return profit;
+		CarDtoProfit carDtoProfit= new CarDtoProfit();
+		
+		carDtoProfit.setIdCar(idCar);
+		carDtoProfit.setModelCar(car.getModelCar());
+		carDtoProfit.setBrandCar(car.getBrandCar());
+		carDtoProfit.setProfit(profit);
+		return carDtoProfit;
 	}
 
 	

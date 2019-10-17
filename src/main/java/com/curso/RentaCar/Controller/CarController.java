@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Dto.CarDtoProfit;
 import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Mapper.MapperServices;
@@ -57,7 +58,7 @@ public class CarController {
 	
 	@PutMapping("/{idCar}/user/{idUser}")    //asocio un coche a un usuario -> http://localhost:8080/car/1*/user/1*
 	public CarDto relationCarUser(@PathVariable("idCar") Integer idCar, @PathVariable ("idUser") Integer idUser) throws CarNotFoundException, UserNotFoundException	{
-		return mapper.mapToDto(carSrv.updateCreatelationUser(idCar,idUser)); // implementar updateCarrelationUser para guardar los datos del usuario en la tabla coche
+		return mapper.mapToDto(carSrv.updateCreatelationUser(idCar,idUser)); // updateCarrelationUser para guardar los datos del usuario en la tabla coche
 	}
 		
 	@DeleteMapping("/{idCar}")
@@ -65,10 +66,12 @@ public class CarController {
 		carSrv.deleteCarService(idCar);
 	}
 	@GetMapping("{idCar}/rent/{initDate}/{finalDate}")//http://localhost:8080/car/1/rent/2015-01-01/2019-10-01
-													//*funcion dado un coche entre unas fechas nos calcula el beneficio o ingreso que ganamos con ese coche
-	public Double carDateProfit (@PathVariable("idCar") Integer idCar , @PathVariable("initDate") String initDate, @PathVariable("finalDate") String finalDate) throws CarNotFoundException{
+													
+	public CarDtoProfit carDateProfit (@PathVariable("idCar") Integer idCar , @PathVariable("initDate") String initDate, @PathVariable("finalDate") String finalDate) throws CarNotFoundException{
 		
-		return	carSrv.calcProfit(idCar,initDate,finalDate);
+		//*funcion dado un coche entre unas fechas nos calcula el beneficio o ingreso que ganamos con ese coche
+		
+		return  carSrv.calcProfit(idCar, initDate, finalDate);
 	}
 
 	

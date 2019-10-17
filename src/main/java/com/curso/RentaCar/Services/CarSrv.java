@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.curso.RentaCar.Dto.CarDto;
+import com.curso.RentaCar.Dto.CarDtoProfit;
 import com.curso.RentaCar.Exception.CarNotFoundException;
 import com.curso.RentaCar.Exception.UserNotFoundException;
 import com.curso.RentaCar.Model.Car;
@@ -26,6 +27,6 @@ public interface CarSrv {
 	
 	Car updateCreatelationUser(Integer idCar, Integer idUser) throws UserNotFoundException, CarNotFoundException;
 
-	Double calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException;
+	CarDtoProfit calcProfit(Integer idCar, String initDate, String finalDate) throws CarNotFoundException;
 	
 	}
