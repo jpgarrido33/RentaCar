@@ -39,6 +39,7 @@ public class UserSrvImpl implements UserSrv {
 	public User getUser(Integer idUser) throws UserNotFoundException {
 	 
 		return Optional.ofNullable(userRepository.findById(idUser).get()).orElseThrow(UserNotFoundException::new);
+		
 	}
 
 	@Override

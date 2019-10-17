@@ -42,7 +42,7 @@ public class CarSrvImpl implements CarSrv  {
 	public Car getCar(Integer idCar) throws CarNotFoundException  {
 		
 		 return	Optional.ofNullable(carRepository.findById(idCar).get()).orElseThrow(CarNotFoundException::new);
-		 
+		
 	}
 	
 	@Override

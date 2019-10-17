@@ -26,7 +26,7 @@ Formato HTML para PostMan en Rent a Car
 4.-PUT-> Modificar coche: -> http://localhost:8080/car/1*
 5.-PUT-> Asociar un coche a un usuario -> http://localhost:8080/car/1*/user/1*
 6.-DELETE-> Elimina un coche: ->http://localhost:8080/car/1*
-7.-GET-> Dado un coche obetener el beneficio entre dos fechas dadas -> pte implementar ->http://localhost:8080/car/rent/fecha1*/fecha2*
+7.-GET-> Dado un coche obetener el beneficio entre dos fechas dadas ->http://localhost:8080/car/1*/rent/2015-01-01*/2019-10-01*
 
 :::::::::::Formato ejemplo JSON::::::::::
 {
@@ -37,7 +37,6 @@ Formato HTML para PostMan en Rent a Car
 
 :::::::::::Alquiler:::::::::::
 
-//En proceso de pruebas//
 1.-GET-> Obtener listado de alquileres: -> http://localhost:8080/rent
 2.-GET-> Obtiene un alquiler por id alquiler -> http://localhost:8080/rent/1*
 2.-POST->Añadir Alquiler:  ->http://localhost:8080/rent/user/1*/car/2*
