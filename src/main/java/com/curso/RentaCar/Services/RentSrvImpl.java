@@ -65,7 +65,7 @@ public class RentSrvImpl implements RentSrv {
 	@Override
 	public Rent getRentService( Integer idRent) throws RentNotFoundException {
 		
-		Rent rent=rentRepository.findById(idRent).orElseThrow(RentNotFoundException::new); // corregir que la borrar un usuario, no de error al mostrar listado alquileres
+		Rent rent=rentRepository.findById(idRent).orElseThrow(RentNotFoundException::new); // corregir que al borrar un usuario, no de error al mostrar listado alquileres
 		
 		return rent;
 	}

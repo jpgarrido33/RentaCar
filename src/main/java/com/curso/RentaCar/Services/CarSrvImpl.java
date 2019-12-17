@@ -111,6 +111,14 @@ public class CarSrvImpl implements CarSrv  {
 		return carDtoProfit;
 	}
 
+	@Override
+	public Page<CarDto> filterCarService( CarDto carDto, Pageable pageable) {
+		
+		
+		
+		return carRepository.findByModelCar(carDto, pageable );
+	}
+
 	
 
 }

@@ -74,6 +74,15 @@ public class CarController {
 		
 		return  carSrv.calcProfit(idCar, initDate, finalDate);
 	}
+	
+	//Funcion filtrado por Modelo y marca 17.12.2019
+	
+	@GetMapping("/filterCar") //http://localhost:8080/car/filterCar/cadenaBusqueda
+	public Page <CarDto> filterCar(@PathVariable("modelCar") String modelCar,@RequestBody CarDto carDto, Pageable pageable)  throws CarNotFoundException {
+		
+		return carSrv.filterCarService(carDto, pageable);
+		 
+	}
 
 	
 }
